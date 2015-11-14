@@ -1,0 +1,36 @@
+{
+  "name": "redux-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch-js": "watchify js/index.js -o dist/bundle.js -t [ babelify --presets [ es2015 react ] ] -v --debug",
+    "watch-styles": "touch .temp/main.css & node-sass --watch styles/main.sass .temp/main.css & postcss --watch --use autoprefixer -o dist/main.css .temp/main.css",
+    "serve": "live-server --entry-file=index.html --ignore='js,styles,.temp' .",
+    "dev": "npm run watch-js & npm run watch-styles & npm run serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.1.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "envify": "^3.4.0",
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "live-server": "^0.8.1",
+    "node-sass": "^3.4.2",
+    "postcss-cli": "^2.3.2",
+    "reactify": "^1.1.1",
+    "uglify-js": "^2.5.0",
+    "watchify": "^3.3.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "6.1.19",
+    "classnames": "2.2.0",
+    "react": "0.14.2",
+    "react-dom": "0.14.2"
+  }
+}
