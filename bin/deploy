@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var Version = require("node-version-assets");
+var versionInstance = new Version({
+    assets: ['build/bundle.js', 'build/main.css'],
+    grepFiles: ['index.html']
+});
+versionInstance.run();
+
+// vim: set syntax=js

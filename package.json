@@ -27,6 +27,7 @@
     "gulp": "3.9.0",
     "live-server": "0.8.2",
     "node-sass": "3.4.2",
+    "node-version-assets": "1.0.1",
     "postcss-cli": "2.3.2",
     "reactify": "1.1.1",
     "uglify-js": "2.6.1",
