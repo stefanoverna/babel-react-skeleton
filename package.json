@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:js": "NODE_ENV=production browserify js/index.js -t [ babelify --presets [ es2015 stage-0 react ] ] -g envify -g uglifyify --debug | exorcist dist/bundle.js.map -b . > dist/bundle.js",
-    "build:styles": "node-sass styles/main.sass .temp/main.css && postcss --use autoprefixer -o dist/main.css .temp/main.css",
+    "build:styles": "node-sass styles/main.sass | postcss --use autoprefixer -o dist/main.css",
     "build": "npm run build:js && npm run build:styles",
     "watch:js": "watchify js/index.js -o dist/bundle.js -t [ babelify --presets [ es2015 stage-0 react ] ] -v --debug",
     "watch:styles": "touch .temp/main.css & node-sass --watch styles/main.sass .temp/main.css & postcss --watch --use autoprefixer -o dist/main.css .temp/main.css",
@@ -13,7 +13,7 @@
     "dev": "npm run watch:js & npm run watch:styles & npm run serve"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "6.1.0",
     "babel-preset-es2015": "6.1.18",
