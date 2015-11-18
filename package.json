@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:js": "NODE_ENV=production browserify js/index.js -o dist/bundle.js -t [ babelify --presets [ es2015 stage-0 react ] ] -g envify -g uglifyify --debug",
+    "build:js": "NODE_ENV=production browserify js/index.js -t [ babelify --presets [ es2015 stage-0 react ] ] -g envify -g uglifyify --debug | exorcist dist/bundle.js.map -b . > dist/bundle.js",
     "build:styles": "node-sass styles/main.sass .temp/main.css && postcss --use autoprefixer -o dist/main.css .temp/main.css",
     "build": "npm run build:js && npm run build:styles",
     "watch:js": "watchify js/index.js -o dist/bundle.js -t [ babelify --presets [ es2015 stage-0 react ] ] -v --debug",
@@ -23,6 +23,7 @@
     "browserify": "12.0.1",
     "envify": "3.4.0",
     "event-stream": "3.3.2",
+    "exorcist": "0.4.0",
     "gulp": "3.9.0",
     "live-server": "0.8.2",
     "node-sass": "3.4.2",
