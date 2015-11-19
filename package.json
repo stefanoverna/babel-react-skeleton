@@ -8,16 +8,11 @@
     "build:js": "NODE_ENV=production browserify js/index.js -t [ babelify --presets [ es2015 stage-0 react ] ] -g envify -g uglifyify --debug | exorcist build/bundle.js.map -b . > build/bundle.js",
     "build:styles": "node-sass styles/main.sass | postcss --use autoprefixer -o build/main.css",
     "build": "npm run build:clean && npm run build:js && npm run build:styles",
-
     "watch:js": "watchify js/index.js -o build/bundle.js -t [ babelify --presets [ es2015 stage-0 react ] ] -v --debug",
     "watch:styles": "touch .temp/main.css & node-sass --watch styles/main.sass .temp/main.css & postcss --watch --use autoprefixer -o build/main.css .temp/main.css",
     "serve": "live-server --entry-file=index.html --ignore='js,styles,.temp' .",
     "dev": "npm run watch:js & npm run watch:styles & npm run serve",
-
-    "deploy:clean": "( rm -r .temp/deploy || : ) && mkdir -p .temp/deploy/build",
-    "deploy:copy": "cp -r build/* .temp/deploy/build && cp index.html .temp/deploy && cp -r images .temp/deploy",
-    "deploy:fingerprint": "./bin/fingerprint",
-    "deploy": "npm run deploy:clean && npm run build && npm run deploy:copy && npm run deploy:fingerprint"
+    "deploy": "npm run build && gulp deploy"
   },
   "author": "",
   "license": "MIT",
@@ -32,9 +27,10 @@
     "event-stream": "3.3.2",
     "exorcist": "0.4.0",
     "gulp": "3.9.0",
+    "gulp-awspublish": "3.0.1",
+    "gulp-rev-all": "0.8.22",
     "live-server": "0.8.2",
     "node-sass": "3.4.2",
-    "node-version-assets": "1.0.1",
     "postcss-cli": "2.3.2",
     "reactify": "1.1.1",
     "uglify-js": "2.6.1",
