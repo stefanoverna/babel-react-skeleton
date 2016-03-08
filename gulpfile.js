@@ -23,6 +23,7 @@ gulp.task('deploy', function () {
   gulp.src([
     'index.html',
     'images/**',
+    'locale-data/**',
     'build/**'
   ])
     .pipe(revAll.revision())

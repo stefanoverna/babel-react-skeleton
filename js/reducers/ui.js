@@ -1,11 +1,12 @@
 import { createReducer } from 'redux-act';
-import { boot } from 'actions/ui';
 import u from 'updeep';
 
+import { switchLocale } from 'actions/ui';
+
 const initialState = {
-  booted: false,
+  locale: 'it',
 };
 
 export default createReducer({
-  [boot]: (state) => u({ booted: true }, state),
+  [switchLocale]: (state, { locale }) => u({ locale }, state),
 }, initialState);
